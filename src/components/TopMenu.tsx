@@ -17,8 +17,8 @@ export default async function TopMenu() {
           sizes="100vh"
         />
         <div className="flex space-x-4">
-          <TopMenuItem title="Select Car" pageRef="/car" />
-          <TopMenuItem title="Reservation" pageRef="/reservations" />
+          <TopMenuItem title="Select Hotel" pageRef="/hotel" />
+          <TopMenuItem title="Booking" pageRef="/bookings" />
           <TopMenuItem title="About" pageRef="/about" />
         </div>
       </div>
