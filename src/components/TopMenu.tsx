@@ -2,8 +2,7 @@ import TopMenuItem from './TopMenuItem';
 import Image from 'next/image';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import { Link } from '@mui/material';
-
+import Link from 'next/link';
 export default async function TopMenu() {
   const session = await getServerSession(authOptions)
   return (
@@ -24,10 +23,18 @@ export default async function TopMenu() {
         </div>
       </div>
       <div className="flex items-center">
+        {session ? "" : (
+          <Link href="/register">
+            <div className="flex items-center h-full px-2 text-cyan-600 text-sm">
+              Register
+            </div>
+          </Link>
+        )}
+
         {session ? (
           <Link href="/api/auth/signout">
             <div className="flex items-center h-full px-2 text-cyan-600 text-sm">
-              Sign-Out of {session.user?.name}
+              Sign-Out
             </div>
           </Link>
         ) : (
