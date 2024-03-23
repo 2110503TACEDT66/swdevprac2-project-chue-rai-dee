@@ -10,7 +10,7 @@ export default function Banner(){
     const router = useRouter()
 
     return(
-        <div className="block px-5 m-0 w-screen h-[80vh] relative" onClick = {()=> {setIndex(index+1)}}>
+        <div className="block px-5 m-0 w-screen h-[100vh] relative" onClick = {()=> {setIndex(index+1)}}>
             <Image src = {covers[index%4]}
             alt = 'cover'
             fill = {true}
