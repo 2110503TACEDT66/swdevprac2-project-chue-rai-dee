@@ -3,6 +3,7 @@ import User from "@/db/model/User"
 import { dbConnect } from "@/db/dbConnect"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
+import { signIn } from 'next-auth/react';
 
 export default async function DashboardPage(){
 
@@ -22,10 +23,20 @@ export default async function DashboardPage(){
                 "role": "user",
                 "tel": tel
             })
+
+            const result = await signIn('credentials', {
+                redirect: false,
+                email: email,
+                password: password,
+            });
+
+            if (result?.ok) {
+                redirect(''); 
+              }
+
         }catch(error){
             console.log(error)
         }
-        redirect("")
     }
 
     return(
