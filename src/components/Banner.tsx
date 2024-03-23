@@ -5,7 +5,7 @@ import Image  from 'next/image';
 import {useState} from 'react';
 
 export default function Banner(){
-    const covers = ['/img/cover.jpg', '/img/cover2.jpg', '/img/cover3.jpg', '/img/cover4.jpg']
+    const covers = ['/img/cover.jpg', '/img/cover1.jpg', '/img/cover2.jpg', '/img/cover3.jpg']
     const [index, setIndex] = useState(0)
     const router = useRouter()
 
