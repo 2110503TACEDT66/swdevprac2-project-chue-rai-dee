@@ -8,14 +8,17 @@ export default async function TopMenu() {
   return (
     <div className="bg-white fixed top-0 left-0 right-0 z-30 border-b border-gray-300 flex items-center justify-between">
       <div className="flex items-center">
-        <Image
-          src="/img/logo.jpg"
-          className="h-12 w-auto mr-4"
-          alt="logo"
-          width={0}
-          height={0}
-          sizes="100vh"
-        />
+        <Link href="/">
+          <Image
+            src="/img/logo.jpg"
+            className="h-12 w-auto mr-4"
+            alt="logo"
+            width={0}
+            height={0}
+            sizes="100vh"
+          />
+        </Link>
+        
         <div className="flex space-x-4">
           <TopMenuItem title="Select Hotel" pageRef="/hotel" />
           <TopMenuItem title="Booking" pageRef="/bookings" />

@@ -6,8 +6,8 @@ export default async function hotelCatalog({hotelJson} : {hotelJson:Promise<hote
     const hotelJsonReady = await hotelJson
     return(
         <>
-            Explore {hotelJsonReady.count} models in our catalog
-            <div style ={{margin : "20px", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent:"space-around", alignContent:"space-around"}}>  
+            <h2  className="text-black">Explore {hotelJsonReady.count} hotels in our catalog</h2>
+            <div style ={{margin : "20px", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent:"space-around", alignContent:"space-around", color: "black"}}>  
                 {
                     hotelJsonReady.data.map((hotelItem:hotelItem)=>(
                         <Link href={`/hotel/${hotelItem.id}`} className="w-1/5">
@@ -19,3 +19,4 @@ export default async function hotelCatalog({hotelJson} : {hotelJson:Promise<hote
         </>
     )
 }
+
