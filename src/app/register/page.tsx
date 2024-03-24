@@ -4,36 +4,42 @@ import { dbConnect } from "@/db/dbConnect"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
 import { signIn } from 'next-auth/react';
+import bcrypt from 'bcryptjs';
 
-export default async function DashboardPage(){
+export default async function RegisterPage(){
 
     const addUser = async (addUserForm:FormData) => {
         "use server"
         const name = addUserForm.get("name")
         const email = addUserForm.get("email")
-        const password = addUserForm.get("password")
+        const password = addUserForm.get("password") as string;
         const tel = addUserForm.get("tel")
+
+        const hashedPassword = await bcrypt.hash(password, 10);
         
         try{
             await dbConnect()
             const user = await User.create({
                 "name":name,
                 "email": email,
-                "password":password,
+                "password":hashedPassword,
                 "role": "user",
                 "tel": tel
             })
 
-            const result = await signIn('credentials', {
-                redirect: false,
-                email: email,
-                password: password,
-            });
-
-            if (result?.ok) {
-                redirect(''); 
-              }
-
+            if (typeof window !== 'undefined') {
+                const result = await signIn('credentials', {
+                    redirect: false,
+                    email: email,
+                    password: password,
+                });
+    
+                if (result?.ok) {
+                    redirect('/'); 
+                } else {
+                    console.error("Sign-in failed after registration.");
+                }
+            }
         }catch(error){
             console.log(error)
         }
