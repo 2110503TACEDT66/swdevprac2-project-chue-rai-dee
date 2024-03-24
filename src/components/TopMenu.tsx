@@ -23,27 +23,28 @@ export default async function TopMenu() {
         </div>
       </div>
       <div className="flex items-center">
-        {session ? "" : (
-          <Link href="/register">
-            <div className="flex items-center h-full px-2 text-cyan-600 text-sm">
-              Register
-            </div>
-          </Link>
-        )}
-
-        {session ? (
+        
+        {session && session.user ? (
           <Link href="/api/auth/signout">
             <div className="flex items-center h-full px-2 text-cyan-600 text-sm">
               Sign-Out
             </div>
           </Link>
         ) : (
-          <Link href="api/auth/signin">
+          <Link href="/api/auth/signin">
             <div className="flex items-center h-full px-2 text-cyan-600 text-sm">
-              Sign-In
+              Sign-In 
             </div>
           </Link>
         )}
+
+        {session ? "" : (
+          <Link href="/register">
+            <div className="flex items-center h-full px-2 text-cyan-600 text-sm">
+              Register
+            </div>
+          </Link>
+        )}  
       </div>
     </div>
   );
