@@ -6,8 +6,8 @@ import BookingForm from "@/components/BookingForm";
 export default async function Bookings(){
 
     const session = await getServerSession(authOptions)
-    if(!session || !session.user?.token) return null
-    const profile = await getUserProfile(session.user?.token)
+    if(!session || !session.user.token) return null
+    const profile = await getUserProfile(session.user.token)
     
     return (
         <main className="w-[100%] flex flex-col items-center space-y-4">

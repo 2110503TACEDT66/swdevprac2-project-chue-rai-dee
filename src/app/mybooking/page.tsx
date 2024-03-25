@@ -5,9 +5,9 @@ import { BookingItem } from "@/interface";
 
 export default async function MyBooking(){
     const session = await getServerSession(authOptions)
-    if(!session || !session.user?.token) return null
+    if(!session || !session.user.token) return null
 
-    const bookings = await getBookings(session.user?.token)
+    const bookings = await getBookings(session.user.token)
     console.log(bookings.data)
 
     return(
