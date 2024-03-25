@@ -21,7 +21,7 @@ export default async function TopMenu() {
         
         <div className="flex space-x-4">
           <TopMenuItem title="Select Hotel" pageRef="/hotel" />
-          <TopMenuItem title="Booking" pageRef="/bookings" />
+          <TopMenuItem title="Booking" pageRef="/bookings/manage" />
           <TopMenuItem title="About" pageRef="/about" />
         </div>
       </div>
