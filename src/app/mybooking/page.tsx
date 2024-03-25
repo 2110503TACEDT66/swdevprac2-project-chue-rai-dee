@@ -15,11 +15,13 @@ export default async function MyBooking(){
             {
                 bookings.data.map((bookingItems)=>(
                     <div className="bg-slate-200 roundex px-5 mx-5 py-2 my-2" key={bookingItems.id}> 
-                        <div className="text-xl">{bookingItems.user?.name}</div>
-                        <div className="text-sm">{bookingItems.hotel.name}</div>
-                        <div className="text-sm">{bookingItems.room?.roomNumber}</div>
+                        <div className="text-xl">Name: {bookingItems.user?.name}</div>
+                        <div className="text-sm">Hotel: {bookingItems.hotel.name}</div>
+                        <div className="text-sm">Room: {bookingItems.room?.roomNumber}</div>
+                        <div className="text-sm">Begin: {new Date(bookingItems.bookingbegin).toLocaleDateString()}</div>
+                        <div className="text-sm">End: {new Date(bookingItems.bookingend).toLocaleDateString()}</div>
                         <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 text-white shadow-sm" >
-                            Remove from Cart
+                            Edit
                         </button>
                     </div>
                 ))
