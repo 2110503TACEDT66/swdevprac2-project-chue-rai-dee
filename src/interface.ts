@@ -19,6 +19,7 @@ export interface hotelJson {
   }
   
 export interface BookingItem{
+    id: string,
     bookingbegin: string,
     bookingend: string,
     user: {

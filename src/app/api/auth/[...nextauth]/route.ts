@@ -1,9 +1,11 @@
 import NextAuth from "next-auth/next";
-import { AuthOptions} from "next-auth";
+import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import userLogin from "@/libs/userLogin";
+
 export const authOptions:AuthOptions = {
-    providers:[
+    providers: [
+        //Authentication Provider, use Credential Provider
         CredentialsProvider({
             // The name to display on the sign in form (e.g. "Sign in with...")
             name: "Credentials",
@@ -30,18 +32,18 @@ export const authOptions:AuthOptions = {
               }
             }
           })
-      ],
-      session : {strategy:"jwt"},
-      callbacks:{
-        async jwt({token, user}){
-          return {...token, ...user}
+    ],
+    session : {strategy: "jwt"},
+    callbacks: {
+        async jwt({token,user}){
+            return {...token, ...user}
         },
-        async session({session, token, user}){
-          session.user = token as any
-          return session
+        async session({session,token,user}){
+            session.user = token as any
+            return session
         }
-      }
+    }
 }
 
 const handler = NextAuth(authOptions)
-export {handler as GET, handler as POST};
+export {handler as GET, handler as POST}
