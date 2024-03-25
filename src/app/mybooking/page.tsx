@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import { AuthOptions } from "next-auth";
 import getBookings from "@/libs/getBookings";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { BookingItem } from "@/interface";
 
 export default async function MyBooking(){
     const session = await getServerSession(authOptions)
@@ -13,7 +14,7 @@ export default async function MyBooking(){
     return(
         <div>
             {
-                bookings.data.map((bookingItems)=>(
+                bookings.data.map((bookingItems:BookingItem)=>(
                     <div className="bg-slate-200 roundex px-5 mx-5 py-2 my-2" key={bookingItems.id}> 
                         <div className="text-xl">Name: {bookingItems.user?.name}</div>
                         <div className="text-sm">Hotel: {bookingItems.hotel.name}</div>

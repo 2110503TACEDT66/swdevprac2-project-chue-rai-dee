@@ -19,9 +19,15 @@ export interface hotelJson {
   }
   
 export interface BookingItem{
-    name:string;
-    surname: string;
-    id: string;
-    hospital: string;
-    bookDate: string;
+    bookingbegin: string,
+    bookingend: string,
+    user: {
+      name: string
+    },
+    room: {
+      roomNumber: string
+    },
+    hotel: {
+      name: string
+    }
   }
