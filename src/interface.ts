@@ -19,7 +19,7 @@ export interface hotelJson {
   }
   
 export interface BookingItem{
-    id: string,
+    _id: string,
     bookingbegin: string,
     bookingend: string,
     user: {
@@ -32,3 +32,8 @@ export interface BookingItem{
       name: string
     }
   }
+
+export interface BookingDetail{
+  data: BookingItem
+}
+
