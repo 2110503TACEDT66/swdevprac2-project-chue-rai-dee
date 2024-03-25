@@ -31,14 +31,14 @@ export default async function HospitalDetailPage({ params }: { params: { hid: st
                         hotelDetail.data.rooms.map((room: roomItem) => (
                             <div className="md:w-1/3">
                                 <div className="bg-white rounded-lg shadow-lg p-6">
-                                    {/* <Image
+                                    <Image
                                         src={room.picture}
                                         alt="Room Image"
                                         width={500}
                                         height={300}
                                         className="rounded-lg"
-                                    /> */}
-                                    <h4 className="text-lg font-semibold mb-4">{room.roomNumber}</h4>
+                                    />
+                                    <h4 className="text-lg font-semibold mb-4 mt-3">{room.roomNumber}</h4>
                                     <p className="text-gray-600 mb-4">Price: ${room.price} / night</p>
                                     <p className="text-gray-600 mb-4">Max Occupancy: {room.maxOccupant}</p>
                                     <Link href={`/booking`}>
