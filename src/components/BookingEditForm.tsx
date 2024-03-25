@@ -24,7 +24,7 @@ export default function BookingEditForm({token, bookingDetail, bid}:{token:strin
             alert(res.message)
             return
         }
-        redirect("/bookings/manage")
+        window.location.href = "/bookings/manage"
         //alert(res)
     }
 

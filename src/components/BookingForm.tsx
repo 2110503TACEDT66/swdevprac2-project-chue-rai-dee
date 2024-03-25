@@ -21,7 +21,7 @@ export default function BookingForm({userId, token}:{userId:string, token:string
             alert(res.message)
             return
         }
-        redirect("/bookings/manage")
+        window.location.href = "/bookings/manage"
         //alert(res)
     }
 

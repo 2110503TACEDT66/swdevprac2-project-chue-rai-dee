@@ -11,7 +11,7 @@ export default function BookingDelete({token, bookingDetail, bid}:{token:string,
             alert(res.message)
             return
         }
-        redirect("/bookings/manage")
+        window.location.href = "/bookings/manage"
         //alert(res)
     }
 
