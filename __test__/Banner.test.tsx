@@ -26,4 +26,11 @@ describe("Banner", () => {
       expect(banner.src).toContain(covers[(i + 1) % covers.length]);
     }
   });
+
+  it("should navigate to hotel page on button click", async () => {
+    render(<Banner />);
+    const button = screen.getByText("Select Hotel");
+    userEvent.click(button);
+    expect(window.location.pathname).toBe("/hotel");
+  });
 });
