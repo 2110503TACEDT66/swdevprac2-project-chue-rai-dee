@@ -2,8 +2,16 @@
 import { useState } from 'react';
 import addBooking from '@/libs/addBooking';
 import { redirect } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 export default function BookingForm({userId, token}:{userId:string, token:string}){
+    const urlParams = useSearchParams()
+    const hid = urlParams.get("hid") || ''
+    const rid = urlParams.get("rid") || '' 
+    const hotelName = urlParams.get("hotelName")
+    const roomNumber = urlParams.get("roomNumber")
+
+
     const today = new Date().toISOString().substr(0, 10);
     const [bookingStart, setBookingStart] = useState(today);
     const [bookingEnd, setBookingEnd] = useState(today);
@@ -15,7 +23,7 @@ export default function BookingForm({userId, token}:{userId:string, token:string
             alert("Booking end date cannot be before booking start date")
             return
         }
-        const res = await addBooking(uid, bookingStart, bookingEnd, '660069f48bf9a3f1211f8cf0', '65e0564d0ce1407644808cf7', token)
+        const res = await addBooking(uid, bookingStart, bookingEnd, hid, rid, token)
         console.log(res)
         if(!res.success){
             alert(res.message)
@@ -31,11 +39,11 @@ export default function BookingForm({userId, token}:{userId:string, token:string
                         <tbody>
                             <tr>
                                 <td>Hotel: </td>
-                                <td>Hotel Name</td>
+                                <td>{hotelName}</td>
                             </tr>
                             <tr>
                                 <td>Room: </td>
-                                <td>123</td>
+                                <td>{roomNumber}</td>
                             </tr>
                             <tr>
                                 <td>Booking Starts: </td>

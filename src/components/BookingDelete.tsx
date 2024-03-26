@@ -21,11 +21,11 @@ export default function BookingDelete({token, bookingDetail, bid}:{token:string,
                         <tbody>
                             <tr>
                                 <td>Hotel: </td>
-                                <td>Hotel Name</td>
+                                <td>{bookingDetail.data.hotel.name}</td>
                             </tr>
                             <tr>
                                 <td>Room: </td>
-                                <td>123</td>
+                                <td>{bookingDetail.data.room.roomNumber}</td>
                             </tr>
                             <tr>
                                 <td>Booking Starts: </td>

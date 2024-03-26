@@ -18,7 +18,7 @@ export default function BookingEditForm({token, bookingDetail, bid}:{token:strin
             alert("Booking end date cannot be before booking start date")
             return
         }
-        const res = await updateBooking(bid, bookingStart, bookingEnd, token, '65e0564d0ce1407644808cf7')
+        const res = await updateBooking(bid, bookingStart, bookingEnd, token)
         console.log(res)
         if(!res.success){
             alert(res.message)
@@ -34,11 +34,11 @@ export default function BookingEditForm({token, bookingDetail, bid}:{token:strin
                         <tbody>
                             <tr>
                                 <td>Hotel: </td>
-                                <td>Hotel Name</td>
+                                <td>{bookingDetail.data.hotel.name}</td>
                             </tr>
                             <tr>
                                 <td>Room: </td>
-                                <td>123</td>
+                                <td>{bookingDetail.data.room.roomNumber}</td>
                             </tr>
                             <tr>
                                 <td>Booking Starts: </td>
