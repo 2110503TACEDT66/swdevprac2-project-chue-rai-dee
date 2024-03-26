@@ -1,32 +1,22 @@
-import User from "@/db/model/User"
-import { dbConnect } from "@/db/dbConnect"
-import bcrypt from 'bcryptjs';
+"use client"
 import { redirect } from "next/navigation";
-import { revalidateTag } from "next/cache";
+import { useState } from "react";
+import userRegister from "@/libs/userRegister";
 
-export default async function RegisterPage(){
-    const addUser = async (addUserForm:FormData) => {
-        "use server"
-        const name = addUserForm.get("name")
-        const email = addUserForm.get("email")
-        const password = addUserForm.get("password") as string;
-        const tel = addUserForm.get("tel")
+export default function RegisterPage(){
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [tel, setTel] = useState('');
 
-        const hashedPassword = await bcrypt.hash(password, 10);
-        
-        try{
-            await dbConnect()
-            const user = await User.create({
-                "name":name,
-                "email": email,
-                "password":hashedPassword,
-                "role": "user",
-                "tel": tel
-            })
-        }catch(error){
-            console.log(error)
+
+    const addUser = async () => {
+        const res = await userRegister(name, email, password, tel)
+        console.log(res)
+        if(!res.success){
+            alert("Failed to register")
+            return
         }
-        revalidateTag("users")
         redirect("/api/auth/signin")
     }
 
@@ -37,22 +27,22 @@ export default async function RegisterPage(){
                 <form action={addUser} className="space-y-4">
                     
                         <label className = 'w-auto block text-gray-700 pr-4' htmlFor='name'>Name</label>
-                        <input type = 'text' required id='name' name='name' placeholder = 'Name' className = 'bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 focus:outline-none focus:border-blue-400' />
+                        <input type = 'text' required id='name' name='name' placeholder = 'Name' onChange={(event)=>{setName(event.target.value)}} className = 'bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 focus:outline-none focus:border-blue-400' />
 
 
                     
                         <label className = 'w-auto block text-gray-700 pr-4' htmlFor='email'>Email</label>
-                        <input type = 'text' required id='email' name='email' placeholder = 'Email' className = 'bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 focus:outline-none focus:border-blue-400' />
+                        <input type = 'text' required id='email' name='email' placeholder = 'Email' onChange={(event)=>{setEmail(event.target.value)}} className = 'bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 focus:outline-none focus:border-blue-400' />
 
                     
                     
                         <label className = 'w-auto block text-gray-700 pr-4' htmlFor='password'>Password</label>
-                        <input type = 'text' required id='password' name='password' placeholder = 'password' className = 'bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 focus:outline-none focus:border-blue-400' />
+                        <input type = 'text' required id='password' name='password' placeholder = 'password' onChange={(event)=>{setPassword(event.target.value)}} className = 'bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 focus:outline-none focus:border-blue-400' />
 
 
                     
                         <label className = 'w-auto block text-gray-700 pr-4' htmlFor='tel'>Tel</label>
-                        <input type = 'text' required id='tel' name='tel' placeholder = 'tel' className = 'bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 focus:outline-none focus:border-blue-400' />
+                        <input type = 'text' required id='tel' name='tel' placeholder = 'tel' onChange={(event)=>{setTel(event.target.value)}} className = 'bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 focus:outline-none focus:border-blue-400' />
 
                     <button type='submit' className='bg-blue-500 hover:bg-blue-700 text-white p-2 rounded' >Register</button>
                 </form>
