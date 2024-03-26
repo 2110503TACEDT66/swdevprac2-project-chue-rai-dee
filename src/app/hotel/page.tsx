@@ -8,7 +8,7 @@ export default async function Hotel(){
 
     return(
         <main className="text-center p-5">
-            <h1 className = "text-xl font-medium text-black">Select Your Travel Partner</h1>
+            <h1 className = "text-xl font-medium text-black">Choose Your Accommodation</h1>
             <Hotelcatalog hotelJson={hotels}/>
         </main>
     )

@@ -6,7 +6,7 @@ export default async function hotelCatalog({hotelJson} : {hotelJson:Promise<hote
     const hotelJsonReady = await hotelJson
     return(
         <>
-            <h2  className="text-black">Explore {hotelJsonReady.count} hotels in our catalog</h2>
+            <h2  className="text-black">Explore {hotelJsonReady.count} hotels in our list</h2>
             <div style ={{margin : "20px", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent:"space-around", alignContent:"space-around", color: "black"}}>  
                 {
                     hotelJsonReady.data.map((hotelItem:hotelItem)=>(
