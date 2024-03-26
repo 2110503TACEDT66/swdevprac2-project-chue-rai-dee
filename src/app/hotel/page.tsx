@@ -1,18 +1,15 @@
 import getHotels from "@/libs/getHotels";
 import Hotelcatalog from "@/components/HotelCatalog";
-import { Suspense } from "react"
-import LinearProgress from '@mui/material/LinearProgress';
 
 export default async function Hotel(){
 
     const hotels = await getHotels()
+    console.log(hotels)
 
     return(
         <main className="text-center p-5">
             <h1 className = "text-xl font-medium text-black">Select Your Travel Partner</h1>
-            <Suspense fallback={ <p>Loading...<LinearProgress/></p> }>
             <Hotelcatalog hotelJson={hotels}/>
-            </Suspense>
         </main>
     )
 }

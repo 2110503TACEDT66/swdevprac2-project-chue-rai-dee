@@ -5,7 +5,7 @@ import { roomItem } from "@/interface";
 
 export default async function HospitalDetailPage({ params }: { params: { hid: string } }) {
     const hotelDetail = await getHotel(params.hid);
-    console.log(hotelDetail.data.rooms)
+    console.log(hotelDetail.data)
     return (
         <main className="container mx-auto px-5 py-10">
             <div className="flex flex-col md:flex-row justify-center bg-white rounded-lg shadow-lg p-5">
