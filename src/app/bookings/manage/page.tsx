@@ -14,6 +14,7 @@ export default async function MyBooking(){
     return(
         <div>
             {
+                bookings.data.length===0 ? <div className="text-2xl text-center m-5">No bookings</div> :
                 bookings.data.map((bookingItems:BookingItem)=>(
                     <div className="bg-slate-200 roundex px-5 mx-5 py-2 my-2 text-black" key={bookingItems._id}> 
                         <div className="text-xl">Name: {bookingItems.user?.name}</div>
