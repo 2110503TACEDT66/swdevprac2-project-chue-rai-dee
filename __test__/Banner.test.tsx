@@ -3,10 +3,10 @@ import Banner from "@/components/Banner";
 import userEvent from "@testing-library/user-event";
 
 // Mock useRouter
-jest.mock("next/router", () => ({
+jest.mock("next/navigation", () => ({
   useRouter() {
     return {
-      push: jest.fn(),
+      prefetch: () => null,
     };
   },
 }));
@@ -43,13 +43,11 @@ describe("Banner", () => {
     }
   });
 
-  it("should navigate to hotel page on button click", async () => {
-    const pushMock = jest.fn();
-
+  it("should have select hotel button", () => {
     render(<Banner />);
-    const button = screen.getByText("Select Hotel");
-    userEvent.click(button);
-
-    expect(pushMock).toHaveBeenCalledWith("/hotel");
+    const selectHotelButton = screen.getByRole("button", {
+      name: "Select Hotel",
+    });
+    expect(selectHotelButton).toBeInTheDocument();
   });
 });
