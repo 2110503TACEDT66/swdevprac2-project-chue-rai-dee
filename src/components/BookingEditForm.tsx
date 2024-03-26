@@ -29,30 +29,30 @@ export default function BookingEditForm({token, bookingDetail, bid}:{token:strin
     }
 
     return(
-        <form action={addBookingVal}>
-                    <table className="table-auto border-seperate border-spacing-2">
+        <form action={addBookingVal} className="w-full max-w-md mx-auto">
+                    <table className="table-auto border-separate border-spacing-2 w-full">
                         <tbody>
                             <tr>
-                                <td>Hotel: </td>
+                                <td className="font-semibold">Hotel: </td>
                                 <td>{bookingDetail.data.hotel.name}</td>
                             </tr>
                             <tr>
-                                <td>Room: </td>
+                                <td className="font-semibold">Room: </td>
                                 <td>{bookingDetail.data.room.roomNumber}</td>
                             </tr>
                             <tr>
-                                <td>Booking Starts: </td>
+                                <td className="font-semibold">Booking Starts: </td>
                                 <td><input type="date" required name="bookingStart" id="bookingStart" min={today} value={bookingStart} onChange={(event)=>{setBookingStart(event.target.value)}} className='w-full'></input></td>
                             </tr>
                             <tr>
-                                <td>Booking Ends: </td>
+                                <td className="font-semibold">Booking Ends: </td>
                                 <td><input type="date" required name="bookingEnd" id="bookingEnd" min={bookingStart} max={bookingEndMax} value={bookingEnd} onChange={(event)=>{setBookingEnd(event.target.value)}} className='w-full'></input></td>
                             </tr>
                         </tbody>
                     </table>
-                    <div className='w-full flex justify-center items-center p-2'>
-                        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white p-2 rounded">Save</button>
+                    <div className="w-full flex justify-center items-center mt-4">
+                        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Save</button>
                     </div>
-                </form>
+        </form>
     )
 }

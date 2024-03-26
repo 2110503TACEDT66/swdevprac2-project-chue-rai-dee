@@ -9,29 +9,31 @@ export default async function MyBooking(){
     if(!session || !session.user.token) return null
 
     const bookings = await getBookings(session.user.token)
-    console.log(bookings.data)
 
     return(
-        <div>
+        <div className="container mx-auto px-4 py-8 text-black">
             {
-                bookings.data.length===0 ? <div className="text-2xl text-center m-5">No bookings</div> :
-                bookings.data.map((bookingItems:BookingItem)=>(
-                    <div className="bg-slate-200 roundex px-5 mx-5 py-2 my-2 text-black" key={bookingItems._id}> 
-                        <div className="text-xl">Name: {bookingItems.user?.name}</div>
-                        <div className="text-sm">Hotel: {bookingItems.hotel?.name}</div>
-                        <div className="text-sm">Room: {bookingItems.room?.roomNumber}</div>
-                        <div className="text-sm">Begin: {new Date(bookingItems.bookingbegin).toLocaleDateString()}</div>
-                        <div className="text-sm">End: {new Date(bookingItems.bookingend).toLocaleDateString()}</div>
-                        <div className="flex flex-row space-x-2">
-                        <Link href={`/bookings/${bookingItems._id}`}>
-                            <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 text-white shadow-sm" >Edit</button>
-                        </Link>
-                        <Link href={`/bookings/${bookingItems._id}/delete`}>
-                        <button className="block rounded-md bg-red-600 hover:bg-red-700 px-3 py-2 text-white shadow-sm">Delete</button>
-                        </Link>
+                bookings.data.length === 0 ? (
+                    <div className="text-2xl text-center my-5">No bookings</div>
+                ) : (
+                    bookings.data.map((bookingItem: BookingItem) => (
+                        <div className="bg-gray-100 rounded-lg p-4 my-4" key={bookingItem._id}> 
+                            <div className="text-xl font-semibold mb-2">Name: {bookingItem.user?.name}</div>
+                            <div className="text-sm mb-2">Hotel: {bookingItem.hotel?.name}</div>
+                            <div className="text-sm mb-2">Room: {bookingItem.room?.roomNumber}</div>
+                            <div className="text-sm mb-2">Begin: {new Date(bookingItem.bookingbegin).toLocaleDateString()}</div>
+                            <div className="text-sm mb-4">End: {new Date(bookingItem.bookingend).toLocaleDateString()}</div>
+                            <div className="flex flex-row space-x-2">
+                                <Link href={`/bookings/${bookingItem._id}`}>
+                                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button>
+                                </Link>
+                                <Link href={`/bookings/${bookingItem._id}/delete`}>
+                                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                                </Link>
+                            </div>
                         </div>
-                    </div>
-                ))
+                    ))
+                )
             }
         </div>
     )

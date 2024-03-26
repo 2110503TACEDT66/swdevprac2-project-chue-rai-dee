@@ -18,18 +18,18 @@ export default async function HospitalDetailPage({ params }: { params: { hid: st
                         className="rounded-lg"
                     />
                 </div>
-                <div className="md:w-2/3 md:ml-10 mt-5 md:mt-0 text-black ">
+                <div className="md:w-2/3 md:ml-10 mt-5 md:mt-0 text-black">
                     <h2 className="text-2xl font-semibold mb-2 mt-4">{hotelDetail.data.name}</h2>
                     <div className="text-lg mb-2">Address: {hotelDetail.data.address}, {hotelDetail.data.district}, {hotelDetail.data.province}, {hotelDetail.data.postalcode}</div>
                     <div className="text-lg mb-4">Tel: {hotelDetail.data.tel}</div>
-                </div>  
+                </div>
             </div>
             <div className="mt-8 text-black">
                 <h3 className="text-2xl mb-4">Rooms:</h3>
-                <div className="mt-8 flex flex-row items-around text-black">
+                <div className="mt-8 flex flex-wrap justify-around items-start text-black">
                     {hotelDetail.data.rooms && hotelDetail.data.rooms.length > 0 ? (
                         hotelDetail.data.rooms.map((room: roomItem) => (
-                            <div className="md:w-1/3">
+                            <div key={room._id} className="flex-grow w-full md:w-1/3 mb-8">
                                 <div className="bg-white rounded-lg shadow-lg p-6">
                                     <Image
                                         src={room.picture}
