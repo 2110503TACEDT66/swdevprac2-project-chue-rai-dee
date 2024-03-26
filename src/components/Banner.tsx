@@ -18,7 +18,7 @@ export default function Banner(){
             fill = {true}
             priority
             objectFit = 'cover'/>
-            <div className = "relative top-24 z-20 text-center">
+            <div className = "relative top-24 z-20 text-center text-white">
                 <h1 className = 'text-4xl font-medium'>
                     Hotel Service Center
                 </h1>
