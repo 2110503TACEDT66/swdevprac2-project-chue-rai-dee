@@ -44,9 +44,12 @@ describe("Banner", () => {
   });
 
   it("should navigate to hotel page on button click", async () => {
+    const pushMock = jest.fn();
+
     render(<Banner />);
     const button = screen.getByText("Select Hotel");
     userEvent.click(button);
-    expect(window.location.pathname).toBe("/hotel");
+
+    expect(pushMock).toHaveBeenCalledWith("/hotel");
   });
 });
