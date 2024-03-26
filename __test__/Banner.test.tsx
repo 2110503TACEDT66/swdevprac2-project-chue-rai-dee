@@ -2,6 +2,22 @@ import { render, screen } from "@testing-library/react";
 import Banner from "@/components/Banner";
 import userEvent from "@testing-library/user-event";
 
+// Mock useRouter
+jest.mock("next/router", () => ({
+  useRouter() {
+    return {
+      push: jest.fn(),
+    };
+  },
+}));
+
+// Mock useSession
+jest.mock("next-auth/react", () => ({
+  useSession() {
+    return { data: null, user: { name: "Tester" } };
+  },
+}));
+
 describe("Banner", () => {
   it("should have top bannertitle", () => {
     render(<Banner />);
