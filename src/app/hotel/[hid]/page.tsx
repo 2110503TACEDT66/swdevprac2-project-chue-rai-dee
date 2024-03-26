@@ -41,7 +41,7 @@ export default async function HospitalDetailPage({ params }: { params: { hid: st
                                     <h4 className="text-lg font-semibold mb-4 mt-3">{room.roomNumber}</h4>
                                     <p className="text-gray-600 mb-4">Price: ${room.price} / night</p>
                                     <p className="text-gray-600 mb-4">Max Occupancy: {room.maxOccupant}</p>
-                                    <Link href={`/booking`}>
+                                    <Link href={`/bookings`}>
                                         <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 text-white shadow-sm">Make Booking</button>
                                     </Link>
                                 </div>
