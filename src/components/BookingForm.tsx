@@ -1,7 +1,8 @@
 "use client"
 import { useState } from 'react';
 import addBooking from '@/libs/addBooking';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation'
+import { redirect } from 'next/navigation';
 
 export default function BookingForm({ userId, token }: { userId: string, token: string }) {
     const urlParams = useSearchParams();
@@ -26,11 +27,11 @@ export default function BookingForm({ userId, token }: { userId: string, token: 
             alert(res.message);
             return;
         }
-        window.location.href = "/bookings/manage";
+        window.location.href = "/bookings/manage"
     };
 
     return (
-        <form onSubmit={addBookingVal} className="w-full max-w-md mx-auto">
+        <form action={addBookingVal} className="w-full max-w-md mx-auto">
             <table className="table-auto border-separate border-spacing-2 w-full">
                 <tbody>
                     <tr>
